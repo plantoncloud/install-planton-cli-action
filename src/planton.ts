@@ -21,14 +21,18 @@ export async function getPlantonCLI(version: string): Promise<string | Error> {
 
   const downloadedPath = await tc.downloadTool(downloadURL);
 
-  // Change permissions of the downloaded binary file to be executable
-  fs.chmodSync(downloadedPath, '755');
-
   const cacheDir = await tc.cacheDir(path.dirname(downloadedPath), "planton", version, os.arch());
 
-  const cachedBinaryPath = path.join(cacheDir, binaryName);
+  const downloadedFilePath = path.join(cacheDir, binaryName);
+  const plantonFilePath = path.join(cacheDir, "planton");
 
-  core.info(`Successfully cached downloaded planton-cli at '${cachedBinaryPath}'`)
+  // Rename the downloaded binary to "planton"
+  fs.renameSync(downloadedFilePath, plantonFilePath);
 
-  return cachedBinaryPath;
+  // Change permissions of the binary file to be executable
+  fs.chmodSync(plantonFilePath, '755');
+
+  core.info(`Successfully cached downloaded planton-cli at '${plantonFilePath}'`)
+
+  return cacheDir;
 }
