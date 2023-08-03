@@ -5,7 +5,7 @@ import * as tc from '@actions/tool-cache';
 import * as fs from "fs";
 
 export async function getPlantonCLI(version: string): Promise<string | Error> {
-  const binaryName = `planton-cli-${version}-linux`;
+  const binaryName = `planton-cli-${version}-${os.platform()}`;
   const binaryPath = tc.find("planton", version, os.arch());
 
   if (binaryPath !== '') {
@@ -17,7 +17,7 @@ export async function getPlantonCLI(version: string): Promise<string | Error> {
 
   const downloadURL = `https://storage.googleapis.com/planton-cli/${version}/${binaryName}`;
 
-  core.info(`Downloading planton-cli from ${downloadURL}...`);
+  core.info(`Downloading planton-cli from '${downloadURL}' ...`);
 
   const downloadedPath = await tc.downloadTool(downloadURL);
 
