@@ -5,7 +5,7 @@ import * as tc from '@actions/tool-cache';
 import * as fs from "fs";
 
 export async function getPlantonCLI(version: string): Promise<string | Error> {
-  const binaryName = `planton-cli-${version}-${os.platform()}-${os.arch()}`;
+  const binaryName = `planton-cli-${version}-${os.platform()}`;
   const binaryPath = tc.find("planton", version, os.arch());
 
   if (binaryPath !== '') {
