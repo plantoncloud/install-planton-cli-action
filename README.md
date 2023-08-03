@@ -18,7 +18,7 @@ Here's an example usage of `gh-action-setup-planton-cli`:
 ```yaml
 steps:
   # Run `git checkout`
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
   # Install the `planton` CLI
   - uses: plantoncloud/gh-action-setup-planton-cli@main
   # Ensure that `planton` is installed
@@ -42,7 +42,7 @@ If `version` is unspecified, the latest version of `planton` is installed:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
   # Installs latest
   - uses: plantoncloud/gh-action-setup-planton-cli@main
   - run: planton version
@@ -52,7 +52,7 @@ Use the `version` parameter to pin to a specific version:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
   # Installs version v0.0.61
   - uses: plantoncloud/gh-action-setup-planton-cli@main
     with:
