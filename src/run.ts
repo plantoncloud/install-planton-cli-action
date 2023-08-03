@@ -12,13 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import * as os from "os";
-import * as path from "path";
 import * as core from "@actions/core";
 import * as io from "@actions/io";
-import * as tc from "@actions/tool-cache";
-import * as exec from "@actions/exec";
-import { getPlanton } from "./getPlanton";
+import { getPlantonCLI } from "./planton";
 import { Error, isError } from "./error";
 
 export async function run(): Promise<void> {
@@ -45,7 +41,7 @@ async function runSetup(): Promise<null | Error> {
   }
 
   core.info(`Setting up Planton CLI version "${version}"`);
-  const installDir = await getPlanton(version);
+  const installDir = await getPlantonCLI(version);
   if (isError(installDir)) {
     return installDir;
   }
