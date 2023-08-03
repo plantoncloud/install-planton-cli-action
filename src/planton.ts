@@ -1,5 +1,4 @@
 import * as os from 'os';
-import * as path from 'path';
 import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
 import * as fs from "fs";
@@ -25,9 +24,9 @@ export async function getPlantonCLI(version: string): Promise<string | Error> {
   // Change permissions of the downloaded binary file to be executable
   fs.chmodSync(downloadedPath, '755');
 
-  const cachedFile = await tc.cacheFile(downloadedPath, cliName, cliName, version, os.arch());
+  const cachedDir = await tc.cacheFile(downloadedPath, cliName, cliName, version, os.arch());
 
-  core.info(`Successfully cached downloaded planton-cli at '${cachedFile}'`)
+  core.info(`Successfully cached downloaded planton-cli in '${cachedDir}' directory`)
 
-  return path.dirname(cachedFile);
+  return cachedDir;
 }
