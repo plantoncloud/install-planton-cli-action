@@ -1,0 +1,14 @@
+name: "planton-cli-setup"
+description: >
+  Install planton-cli for use in other jobs.
+branding:
+  icon: play
+  color: green
+inputs:
+  version:
+    description: The version of planton-cli to set up.
+    required: false
+    default: 'v0.0.61'
+runs:
+  using: "node16"
+  main: "./dist/main.js"
