@@ -1,5 +1,5 @@
 {
-  "name": "planton-cli-setup",
+  "name": "planton-cli-install",
   "version": "1.0.0",
   "scripts": {
     "build": "esbuild --minify --bundle --sourcemap '--define:process.env.NODE_ENV=\"production\"' --outdir=dist --platform=node --target=node16 ./src/main.ts",

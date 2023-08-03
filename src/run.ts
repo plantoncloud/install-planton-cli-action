@@ -56,6 +56,6 @@ async function runSetup(): Promise<null | Error> {
     };
   }
 
-  core.info(`Successfully setup planton-cli version ${version}`);
+  core.info(`Successfully installed planton-cli version ${version}`);
   return null;
 }

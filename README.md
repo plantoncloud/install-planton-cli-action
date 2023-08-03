@@ -1,4 +1,4 @@
-# `gh-action-setup-planton-cli`
+# `gh-action-install-planton-cli`
 
 This [Action] installs the `planton` CLI in your GitHub Actions pipelines so that it can be
 used by other Actions created for Building and Deploying your Packages & Microservices.
@@ -8,19 +8,19 @@ used by other Actions created for Building and Deploying your Packages & Microse
 * [`gh-action-build-javascript`][https://github.com/plantoncloud/gh-action-build-javascript]
 * [`gh-action-build-protobuf`][https://github.com/plantoncloud/gh-action-build-protobuf]
 
-After `gh-action-setup-planton-cli` is run, the `planton` command is available to other Actions in the pipeline's
+After `gh-action-install-planton-cli` is run, the `planton` command is available to other Actions in the pipeline's
 `PATH`. You can also use the `planto` command directly inside of workflow steps.
 
 ## Usage
 
-Here's an example usage of `gh-action-setup-planton-cli`:
+Here's an example usage of `gh-action-install-planton-cli`:
 
 ```yaml
 steps:
   # Run `git checkout`
   - uses: actions/checkout@v3
   # Install the `planton` CLI
-  - uses: plantoncloud/gh-action-setup-planton-cli@main
+  - uses: plantoncloud/gh-action-install-planton-cli@main
   # Ensure that `planton` is installed
   - run: planton version
 ```
@@ -29,7 +29,7 @@ steps:
 
 ### Input
 
-You can configure `gh-action-setup-planton-cli` with these parameters:
+You can configure `gh-action-install-planton-cli` with these parameters:
 
 | Parameter      | Description                                                | Default            |
 |:---------------|:-----------------------------------------------------------|:-------------------|
@@ -44,7 +44,7 @@ If `version` is unspecified, the latest version of `planton` is installed:
 steps:
   - uses: actions/checkout@v3
   # Installs latest
-  - uses: plantoncloud/gh-action-setup-planton-cli@main
+  - uses: plantoncloud/gh-action-install-planton-cli@main
   - run: planton version
 ```
 
@@ -54,7 +54,7 @@ Use the `version` parameter to pin to a specific version:
 steps:
   - uses: actions/checkout@v3
   # Installs version v0.0.61
-  - uses: plantoncloud/gh-action-setup-planton-cli@main
+  - uses: plantoncloud/gh-action-install-planton-cli@main
     with:
       version: v0.0.61
   # Should output v0.0.61
