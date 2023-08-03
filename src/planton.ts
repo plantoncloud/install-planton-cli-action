@@ -5,6 +5,7 @@ import * as tc from '@actions/tool-cache';
 import * as fs from "fs";
 
 export async function getPlantonCLI(version: string): Promise<string | Error> {
+  const cliName = `planton`;
   const binaryName = `planton-cli-${version}-${os.platform()}`;
   const binaryPath = tc.find("planton", version, os.arch());
 
@@ -19,25 +20,16 @@ export async function getPlantonCLI(version: string): Promise<string | Error> {
 
   core.info(`Downloading planton-cli from '${downloadURL}' ...`);
 
-  const downloadedPath = await tc.downloadTool(downloadURL);
+  const downloadedPath = await tc.downloadTool(downloadURL, cliName);
+
+  // Change permissions of the downloaded binary file to be executable
+  fs.chmodSync(downloadedPath, '755');
 
   const cacheDir = await tc.cacheDir(path.dirname(downloadedPath), "planton", version, os.arch());
 
-  const downloadedFilePath = path.join(cacheDir, binaryName);
-  const plantonFilePath = path.join(cacheDir, "planton");
+  const cachedBinaryPath = path.join(cacheDir, cliName);
 
-  core.info(`Downloaded path: '${downloadedPath}'`);
-  core.info(`Cache directory: '${cacheDir}'`);
-  core.info(`Downloaded file path: '${downloadedFilePath}'`);
-  core.info(`Planton file path: '${plantonFilePath}'`);
+  core.info(`Successfully cached downloaded planton-cli at '${cachedBinaryPath}'`)
 
-  // Rename the downloaded binary to "planton"
-  fs.renameSync(downloadedFilePath, plantonFilePath);
-
-  // Change permissions of the binary file to be executable
-  fs.chmodSync(plantonFilePath, '755');
-
-  core.info(`Successfully cached downloaded planton-cli at '${plantonFilePath}'`)
-
-  return cacheDir;
+  return cachedBinaryPath;
 }
