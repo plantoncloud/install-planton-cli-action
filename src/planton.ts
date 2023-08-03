@@ -26,7 +26,9 @@ export async function getPlantonCLI(version: string): Promise<string | Error> {
 
   const cacheDir = await tc.cacheDir(path.dirname(downloadedPath), "planton", version, os.arch());
 
-  core.info(`Successfully cached downloaded planton-cli in '${cacheDir}' directory`)
+  const cachedBinaryPath = path.join(cacheDir, binaryName);
 
-  return downloadedPath;
+  core.info(`Successfully cached downloaded planton-cli at '${cachedBinaryPath}'`)
+
+  return cachedBinaryPath;
 }
