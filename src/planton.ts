@@ -25,11 +25,9 @@ export async function getPlantonCLI(version: string): Promise<string | Error> {
   // Change permissions of the downloaded binary file to be executable
   fs.chmodSync(downloadedPath, '755');
 
-  const cacheDir = await tc.cacheFile(downloadedPath, cliName, cliName, version, os.arch());
+  const cachedFile = await tc.cacheFile(downloadedPath, cliName, cliName, version, os.arch());
 
-  const cachedBinaryPath = path.join(cacheDir, cliName);
+  core.info(`Successfully cached downloaded planton-cli at '${cachedFile}'`)
 
-  core.info(`Successfully cached downloaded planton-cli at '${cachedBinaryPath}'`)
-
-  return cachedBinaryPath;
+  return path.dirname(cachedFile);
 }
