@@ -26,6 +26,11 @@ export async function getPlantonCLI(version: string): Promise<string | Error> {
   const downloadedFilePath = path.join(cacheDir, binaryName);
   const plantonFilePath = path.join(cacheDir, "planton");
 
+  core.info(`Downloaded path: '${downloadedPath}'`);
+  core.info(`Cache directory: '${cacheDir}'`);
+  core.info(`Downloaded file path: '${downloadedFilePath}'`);
+  core.info(`Planton file path: '${plantonFilePath}'`);
+
   // Rename the downloaded binary to "planton"
   fs.renameSync(downloadedFilePath, plantonFilePath);
 
