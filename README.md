@@ -33,7 +33,7 @@ You can configure `gh-action-install-planton-cli` with these parameters:
 
 | Parameter      | Description                                                | Default            |
 |:---------------|:-----------------------------------------------------------|:-------------------|
-| `version`      | The version of the [`planton` CLI] to install              | `v0.0.62`          |
+| `version`      | The version of the [`planton` CLI] to install              | `v0.0.63`          |
 
 > These parameters are derived from [`action.yml`](./action.yml). <br>
 #### Version
@@ -53,11 +53,11 @@ Use the `version` parameter to pin to a specific version:
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  # Installs version v0.0.62
+  # Installs version v0.0.63
   - uses: plantoncloud/gh-action-install-planton-cli@main
     with:
-      version: v0.0.62
-  # Should output v0.0.62
+      version: v0.0.63
+  # Should output v0.0.63
   - run: planton --version
 ```
 
