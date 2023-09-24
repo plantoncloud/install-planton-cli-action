@@ -33,7 +33,7 @@ You can configure `gh-action-install-planton-cli` with these parameters:
 
 | Parameter      | Description                                                | Default            |
 |:---------------|:-----------------------------------------------------------|:-------------------|
-| `version`      | The version of the [`planton` CLI] to install              | `v0.0.65`          |
+| `version`      | The version of the [`planton` CLI] to install              | `v0.0.73`          |
 
 > These parameters are derived from [`action.yml`](./action.yml). <br>
 #### Version
