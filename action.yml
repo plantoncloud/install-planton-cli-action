@@ -8,7 +8,7 @@ inputs:
   version:
     description: The version of planton-cli to set up.
     required: false
-    default: 'v0.0.77'
+    default: 'v0.0.85'
 runs:
   using: "node16"
   main: "./dist/main.js"
