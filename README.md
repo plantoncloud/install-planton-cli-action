@@ -33,7 +33,7 @@ You can configure `gh-action-install-planton-cli` with these parameters:
 
 | Parameter      | Description                                                | Default            |
 |:---------------|:-----------------------------------------------------------|:-------------------|
-| `version`      | The version of the [`planton` CLI] to install              | `v0.2.53`          |
+| `version`      | The version of the [`planton` CLI] to install              | `v0.2.54`          |
 
 > These parameters are derived from [`action.yml`](./action.yml). <br>
 #### Version
@@ -56,8 +56,8 @@ steps:
   # Installs version v0.0.65
   - uses: plantoncloud/gh-action-install-planton-cli@main
     with:
-      version: v0.2.53
-  # Should output v0.2.53
+      version: v0.2.54
+  # Should output v0.2.54
   - run: planton --version
 ```
 
