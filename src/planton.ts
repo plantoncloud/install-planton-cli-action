@@ -5,7 +5,7 @@ import * as fs from "fs";
 
 export async function getPlantonCLI(version: string): Promise<string | Error> {
   const cliName = `planton`;
-  const binaryName = `planton-cli-${version}-${os.platform()}`;
+  const binaryName = `planton-${version}-${os.platform()}`;
   const binaryPath = tc.find("planton", version, os.arch());
 
   if (binaryPath !== '') {
